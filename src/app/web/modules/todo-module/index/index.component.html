@@ -1,0 +1,96 @@
+<div class="container">
+  <h3 class="mb-3">Pet site</h3>
+  <div class="row justify-content-center">
+    <div>
+      <section *ngIf="tasks?.length === 0">
+        <section class="row mt-3 mb-3">
+          <section class="col-12">
+            <section class="card p-3">
+              <i class="fas fa-exclamation-circle font-w"></i>
+              <p class="font-w">Lista de mascotas vacia</p>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <ng-container *ngIf="tasks">
+        <div class="row ">
+          <div class="col-12 ">
+            <section class="card mb-4 p-4" *ngFor="let task of tasks">
+              <h4>{{task.title}}</h4>
+              <section class="sect-img">
+                <span class="img-likes">
+                  <img class="border-rem" src="http://localhost:8000{{task.photo}}" alt="">
+                  <hr>
+                  <section class="section-likes">
+                    <button [disabled]="liked" class="btn btn-outline-primary" (click)="like(task.id)"><i
+                        class="far fa-thumbs-up"></i> Like</button>
+                    <strong><i class="far fa-thumbs-up"></i> {{task.likes}} likes</strong>
+                  </section>
+                </span>
+              </section>
+            </section>
+          </div>
+        </div>
+      </ng-container>
+
+      <section class="sec-add">
+        <p class="mr-2">Añadir Mascotas</p>
+        <button type="button" class="btn rounded-circle" (click)="openModal(template)">
+          <i class="fas fa-plus"></i></button>
+      </section>
+
+    </div>
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Agregar Mascotas</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="petForm" (ngSubmit)="onSubmit()" class="inline">
+        <div class="form-row">
+          <div class="form-group col-12 d-flex align-items-baseline">
+            <label for="" class="mr-2">Título</label>
+            <input type="text" formControlName="title" placeholder="" class="border-cus">
+          </div>
+          <div class="form-group col-12">
+            <label for="" class="mr-2">Fotos</label>
+            <section class="group-gap">
+              <!-- Upload image -->
+              <section class="avatar-upload">
+                <section class="avatar-edit">
+                  <input formControlName="file" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                    (change)="uploadFile($event)" />
+                </section>
+                <section class="avatar-preview">
+                  <section id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                  </section>
+                </section>
+              </section>
+            </section>
+            <!-- Submit Button -->
+            <section *ngIf="!isImageToUpload">
+              <button type="button" class="btn btn-primary btn-lg btn-block"
+                (click)="fileInput.click();">Cargar</button>
+            </section>
+            <section *ngIf="isImageToUpload">
+              
+              <button type="button" class="btn btn-danger btn-lg btn-block"
+                (click)="removeUploadedFile();">Eliminar</button>
+            </section>
+          </div>
+        </div>
+        <section class="d-flex justify-content-end">
+          <button *ngIf="!isUpdateTask" type="submit" class="btn btn-primary btn-sm mr-3">Añadir</button>
+        </section>
+      </form>
+    </div>
+  </ng-template>
+
+
+  <!-- <button *ngIf="!isFormActive"  class="btn btn-primary btn-block" (click)="showForm()" >Crear Una Tarea</button>
+ -->

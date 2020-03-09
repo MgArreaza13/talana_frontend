@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-5">
+      <div class="card m-5">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" formControlName="username" class="form-control" id="username" placeholder="Enter User">
+            <section *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+              <section *ngIf="f['username'].errors.required">El campo es requerido</section>
+            </section>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+            <section *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <section *ngIf="f['password'].errors.required">El campo es requerido</section>
+              <section *ngIf="f['password'].errors.minlength || f['password'].errors.maxlength">La contraseña debe tener
+                mínimo 6 y máximo 10 caracteres</section>
+            </section>
+          </div>
+          <span>¿No tienes cuenta? <a [routerLink]="['/auth/register']">Registrate</a></span>
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

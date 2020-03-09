@@ -1,0 +1,16 @@
+<section class="page-wrapper">
+    <app-sidebar [visibility]="toggleSidebar" (changeVisibility)="detectChange($event)"></app-sidebar>
+    <main class="page-content bg-light" [ngClass]="{'pull-left-content':toggleSidebar === 'none'}">
+      <section class="container-fluid">
+        <section class="row">
+          <section class="form-group col-md-12">
+            <router-outlet></router-outlet>
+            <a *ngIf="toggleSidebar == 'none'" id="btn-t" class="btn btn-toggle" (click)="toggle()">
+              <i class="fas fa-bars"></i>
+            </a>
+          </section>
+        </section>
+      </section>
+    </main>
+  </section>
+  

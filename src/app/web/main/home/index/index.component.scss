@@ -1,0 +1,75 @@
+.pull-left-content {
+    padding-left: 0px !important;
+  }
+  
+  .page-wrapper {
+    height: 100vh;
+  
+    .page-content {
+      display: inline-block;
+      width: 100%;
+      padding-top: 40px;
+      transition: padding-left .3s ease;
+      padding-bottom: 90px;
+      height: 100%;
+  
+      @media screen and (min-width: 768px) {
+        padding-left: 300px;
+        height: auto;
+      }
+  
+      .overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 998;
+        background: #000;
+        opacity: .5;
+        display: none;
+  
+        &.show {
+          @media screen and (max-width: 768px) {
+            display: block;
+          }
+        }
+      }
+    }
+  
+    .sidebar {
+      left: 0px;
+    }
+  
+    &.toggled {
+      .page-content {
+        padding-left: 0;
+      }
+    }
+  
+    .attribution {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 5px;
+      margin: 5px;
+      letter-spacing: 1px;
+    }
+  }
+  
+  .btn-toggle {
+    position: fixed;
+    bottom: 35px;
+    right: 40px;
+    background: linear-gradient(to right, #dc3545, #ca1829);
+    border: none;
+    font-size: 17px;
+    color: white !important;
+    z-index: 9999;
+  }
+  
+  #btn-t:hover {
+    background:#ca1829;
+    border-bottom-right-radius: 18px;
+  }
+  

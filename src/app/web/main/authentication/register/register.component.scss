@@ -1,0 +1,24 @@
+.container-fluid {
+  height: 100vh;
+  background: #ed213a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #93291e,
+    #ed213a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93291e,
+    #ed213a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.card {
+  padding: 0.8em;
+  box-shadow: -2px 2px 11px #e66b77;
+}
+h2 {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  font-size: 43px;
+}
